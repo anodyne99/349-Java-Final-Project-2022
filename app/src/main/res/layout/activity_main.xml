@@ -1,18 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RelativeLayout
+            android:id="@+id/Header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
+                android:layout_height="125dp"
+                android:text="@string/welcome"
+                android:textAlignment="center"
+                android:textSize="100sp">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@id/welcome"
+                android:layout_centerHorizontal="true"
+                android:text="@string/please_enter_your_details_below"
+                android:textAlignment="center"
+                android:textSize="40sp">
+            </TextView>
+        </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!--EditText for adding user First name-->
+        <EditText
+            android:id="@+id/idEditFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/Header"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:hint="@string/enter_first_name"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
+
+        <!--EditText for adding user Last name-->
+        <EditText
+            android:id="@+id/idEditLastName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/idEditFirstName"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:hint="@string/enter_last_name"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName" />
+
+        <!--EditText for adding user weight-->
+        <EditText
+            android:id="@+id/idEditWeight"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/idEditLastName"
+            android:layout_margin="10dp"
+            android:hint="@string/enter_your_weight"
+            android:inputType="number"
+            android:maxLength="3"
+            android:importantForAutofill="no"/>
+
+        <!--EditText for adding user zip-->
+        <EditText
+            android:id="@+id/idEditZipCode"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/idEditWeight"
+            android:layout_margin="10dp"
+            android:hint="@string/enter_your_zip_code"
+            android:maxLength="5"
+            android:inputType="number" />
+
+        <!--Button for adding data to Firebase-->
+        <Button
+            android:id="@+id/idBtnSendData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idEditZipCode"
+            android:layout_margin="10dp"
+            android:text="@string/login_add_user"
+            android:textAllCaps="true" />
+
+</RelativeLayout>

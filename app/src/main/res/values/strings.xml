@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Exercise App</string>
+    <string name="enter_last_name">Enter Last Name</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_your_weight">Enter your weight</string>
+    <string name="enter_your_zip_code">Enter your zip code</string>
+    <string name="login_add_user">Login/Add User</string>
+    <string name="welcome">Welcome!</string>
+    <string name="please_enter_your_details_below">Please enter your details below</string>
 </resources>
