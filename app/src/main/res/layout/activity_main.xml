@@ -16,7 +16,7 @@
                 android:layout_height="125dp"
                 android:text="@string/welcome"
                 android:textAlignment="center"
-                android:textSize="100sp">
+                android:textSize="80sp">
             </TextView>
         </RelativeLayout>
 

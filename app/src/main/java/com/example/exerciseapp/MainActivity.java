@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,19 +14,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     Bundle extras = new Bundle();
 
+    // Added these for fun as confirmation sounds
     MediaPlayer completeSound;
     MediaPlayer errorSound;
 
@@ -63,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         databaseReference = firebaseDatabase.getReference();
 
-        userInfo = new UserInfo();
-
         Button sendBtn = findViewById(R.id.idBtnSendData);
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     addUserToFireBase(userName, firstName, lastName, weight, zipCode);
                 }
-
             }
         });
     }
@@ -94,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
         UserInfo user = new UserInfo(firstName, lastName, weight, zipCode);
         DatabaseReference usernameRef = databaseReference.child("Users").child(userName);
+        // Only works for one user at a time. Putting in a new username will overwrite previous
+        // Needs retooling, outside of assignment requirements and what we covered in class
         usernameRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
