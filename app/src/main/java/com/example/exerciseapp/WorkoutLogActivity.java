@@ -55,7 +55,9 @@ public class WorkoutLogActivity extends AppCompatActivity {
 
 
     TextView currentTemp, tempMin, tempMax, windSpeed;
-    String APIKEY = "45fed4f1d32e71dd18b79a4aed3ac3e9";
+
+    // Using weatherbit.io as it works with zipcode search
+    String APIKEY = "f8c601883afb465695c3bb9550a151a9";
 
     String name;
     int zip;
