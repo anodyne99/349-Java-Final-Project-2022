@@ -1,23 +1,24 @@
 package com.example.exerciseapp;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import android.os.AsyncTask;
 
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class WorkoutLogActivity extends AppCompatActivity {
+
+    TextView currentTemp, tempMin, tempMax, windSpeed;
+    String APIKEY = "45fed4f1d32e71dd18b79a4aed3ac3e9";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

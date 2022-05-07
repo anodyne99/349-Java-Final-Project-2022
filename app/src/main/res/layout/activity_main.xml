@@ -18,23 +18,25 @@
                 android:textAlignment="center"
                 android:textSize="100sp">
             </TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_below="@id/welcome"
-                android:layout_centerHorizontal="true"
-                android:text="@string/please_enter_your_details_below"
-                android:textAlignment="center"
-                android:textSize="40sp">
-            </TextView>
         </RelativeLayout>
+
+        <EditText
+            android:id="@+id/idEditUserName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/Header"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:hint="@string/enter_username"
+            android:importantForAutofill="no"
+            android:inputType="text"/>
 
         <!--EditText for adding user First name-->
         <EditText
             android:id="@+id/idEditFirstName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@id/Header"
+            android:layout_below="@id/idEditUserName"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             android:hint="@string/enter_first_name"

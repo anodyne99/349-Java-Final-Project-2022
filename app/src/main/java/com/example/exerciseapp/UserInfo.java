@@ -4,11 +4,17 @@ public class UserInfo {
 
     private String firstName;
     private String lastName;
-    private int zipCode;
-    private short weight;
-
+    private String zipCode;
+    private String weight;
     public UserInfo() {
 
+    }
+
+    public UserInfo(String firstname, String lastname, String wt, String zip){
+        firstName = firstname;
+        lastName = lastname;
+        weight = wt;
+        zipCode = zip;
     }
 
     public String getFirstName() {
@@ -27,21 +33,19 @@ public class UserInfo {
         this.lastName = lastName;
     }
 
-    public short getWeight() {
+    public String getWeight() {
         return weight;
     }
 
-    public void setWeight(short weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
+    public void setZipCode(String zipCode) { this.zipCode = zipCode;}
 
 
 }
