@@ -3,23 +3,14 @@ package com.example.exerciseapp;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.AsyncListUtil;
 
 import android.os.AsyncTask;
 
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 public class WorkoutLogActivity extends AppCompatActivity {
 
@@ -82,14 +73,11 @@ public class WorkoutLogActivity extends AppCompatActivity {
     }
 
     public boolean niceWeather(double temp, double wind, double rain) {
-        if (temp > 70 && temp < 95 && wind < 20){ return true; }
-        else{return false;}
+        return temp > 70 && temp < 95 && wind < 20;
     }
 
     public boolean niceAtmosphere(double quality) {
-        if (quality <= 100){
-            return true;
-        } else {return false;}
+        return quality <= 100;
     }
 
     public String uvMessage(double index){
@@ -110,10 +98,9 @@ public class WorkoutLogActivity extends AppCompatActivity {
             super.onPreExecute();
         }
 
-        protected String doInBackground(String args[]) {
-            String response = HttpRequest.executeGet("https://api.weatherbit.io/v2.0/current?postal_code="
+        protected String doInBackground(String[] args) {
+            return HttpRequest.executeGet("https://api.weatherbit.io/v2.0/current?postal_code="
                     + zip + "&country=US&units=I&key=" + APIKEY);
-            return response;
         }
         @Override
         protected void onPostExecute(String result){

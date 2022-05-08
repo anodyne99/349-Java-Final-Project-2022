@@ -21,6 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
         UserInfo user = new UserInfo(firstName, lastName, weight, zipCode);
         DatabaseReference usernameRef = databaseReference.child("Users").child(userName);
+        Map<String, String> updatedUser = new HashMap<>();
+        updatedUser.put("firstName", user.getFirstName());
+        updatedUser.put("lastName", user.getLastName());
+        updatedUser.put("weight", user.getWeight());
+        updatedUser.put("zipCode", user.getZipCode());
         // Only works for one user at a time. Putting in a new username will overwrite previous
         // Needs retooling, outside of assignment requirements and what we covered in class
         usernameRef.addValueEventListener(new ValueEventListener() {
@@ -91,11 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // if the user doesn't exist, creates a new user
                 if( !snapshot.exists()) {
-                    databaseReference.child("Users").setValue(userName);
-                    usernameRef.child("firstName").setValue(firstName);
-                    usernameRef.child("lastName").setValue(lastName);
-                    usernameRef.child("weight").setValue(weight);
-                    usernameRef.child("zipCode").setValue(zipCode);
+                    databaseReference.child("Users").child(userName).setValue(updatedUser);
                     Toast.makeText(MainActivity.this, "User successfully added",
                             Toast.LENGTH_SHORT).show();
                     completeSound.start();

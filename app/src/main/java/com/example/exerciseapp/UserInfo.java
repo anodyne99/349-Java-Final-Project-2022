@@ -1,5 +1,7 @@
 package com.example.exerciseapp;
 
+import java.util.ArrayList;
+
 public class UserInfo {
 
     private String firstName;
@@ -46,6 +48,4 @@ public class UserInfo {
     }
 
     public void setZipCode(String zipCode) { this.zipCode = zipCode;}
-
-
 }
