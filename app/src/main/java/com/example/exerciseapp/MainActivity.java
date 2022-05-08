@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 extras.putString("firstName", user.getFirstName());
                 extras.putString("lastName", user.getLastName());
                 extras.putDouble("weight", Double.parseDouble(user.getWeight()));
-                extras.putInt("zip", Integer.parseInt(user.getZipCode()));
+                extras.putString("zip", user.getZipCode());
                 Intent intent = new Intent(MainActivity.this, WorkoutLogActivity.class);
                 intent.putExtras(extras);
                 completeSound.start();

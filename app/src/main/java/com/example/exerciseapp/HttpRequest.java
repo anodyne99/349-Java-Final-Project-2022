@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HttpRequest {
-    public static String execute(String targetURL) {
+    public static String executeGet(String targetURL) {
         URL url;
         HttpURLConnection urlConnection = null;
         try {

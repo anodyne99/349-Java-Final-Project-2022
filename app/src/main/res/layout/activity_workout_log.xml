@@ -3,20 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
     tools:context=".WorkoutLogActivity">
 
     <RelativeLayout
         android:id="@+id/Header"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="100dp">
+
         <TextView
-            android:id="@+id/welcome"
+            android:id="@+id/Loading"
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="100dp"
             android:textAlignment="center"
-            android:textSize="80sp">
-        </TextView>
+            android:text="LOADING"
+            android:textSize="80sp"></TextView>
+
+        <TextView
+            android:id="@+id/GoodWeather"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textAlignment="center"
+            android:textSize="20sp"></TextView>
+
+        <TextView
+            android:id="@+id/UVGood"
+            android:layout_below="@+id/GoodWeather"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textAlignment="center"
+            android:textSize="20sp"></TextView>
     </RelativeLayout>
 
 
