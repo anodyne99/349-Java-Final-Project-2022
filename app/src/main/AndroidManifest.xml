@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExerciseApp">
         <activity
-            android:name=".MainActivity"
+            android:name=".IntroVideoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +22,9 @@
         </activity>
         <activity
             android:name=".WorkoutLogActivity">
+        </activity>
+        <activity
+            android:name=".MainActivity">
         </activity>
     </application>
 

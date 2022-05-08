@@ -78,23 +78,22 @@ public class MainActivity extends AppCompatActivity {
                             "your entries and try again", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    addUserToFireBase(userName, firstName, lastName, weight, zipCode);
+                    UserInfo user = new UserInfo(firstName, lastName, weight, zipCode);
+                    addUserToFireBase(user, userName);
                 }
             }
         });
     }
 
-    private void addUserToFireBase(String userName, String firstName, String lastName, String weight, String zipCode){
+    private void addUserToFireBase(UserInfo userInfo, String userName){
 
-        UserInfo user = new UserInfo(firstName, lastName, weight, zipCode);
         DatabaseReference usernameRef = databaseReference.child("Users").child(userName);
+        UserInfo updatedUserInfo = new UserInfo();
         Map<String, String> updatedUser = new HashMap<>();
-        updatedUser.put("firstName", user.getFirstName());
-        updatedUser.put("lastName", user.getLastName());
-        updatedUser.put("weight", user.getWeight());
-        updatedUser.put("zipCode", user.getZipCode());
-        // Only works for one user at a time. Putting in a new username will overwrite previous
-        // Needs retooling, outside of assignment requirements and what we covered in class
+        updatedUser.put("firstName", userInfo.getFirstName());
+        updatedUser.put("lastName", userInfo.getLastName());
+        updatedUser.put("weight", userInfo.getWeight());
+        updatedUser.put("zipCode", userInfo.getZipCode());
         usernameRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -103,31 +102,23 @@ public class MainActivity extends AppCompatActivity {
                     databaseReference.child("Users").child(userName).setValue(updatedUser);
                     Toast.makeText(MainActivity.this, "User successfully added",
                             Toast.LENGTH_SHORT).show();
-                    completeSound.start();
+                    extras.putString("firstName", userInfo.getFirstName());
+                    extras.putString("lastName", userInfo.getLastName());
+                    extras.putDouble("weight", Double.parseDouble(userInfo.getWeight()));
+                    extras.putString("zip", userInfo.getZipCode());
                 }
                 else {
-                    // if does exist , pulls existing user info from database
-                    ValueEventListener eventListener = new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            UserInfo user = snapshot.getValue(UserInfo.class);
-                            completeSound.start();
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            errorSound.start();
-                        }
-                    };
-
+                    UserInfo updatedUserInfo = snapshot.getValue(UserInfo.class);
+                    extras.putString("firstName", updatedUserInfo.getFirstName());
+                    extras.putString("lastName", updatedUserInfo.getLastName());
+                    extras.putDouble("weight", Double.parseDouble(updatedUserInfo.getWeight()));
+                    extras.putString("zip", updatedUserInfo.getZipCode());
+                    Toast.makeText(MainActivity.this, "User login successful",
+                            Toast.LENGTH_SHORT).show();
                 }
-                extras.putString("firstName", user.getFirstName());
-                extras.putString("lastName", user.getLastName());
-                extras.putDouble("weight", Double.parseDouble(user.getWeight()));
-                extras.putString("zip", user.getZipCode());
+                completeSound.start();
                 Intent intent = new Intent(MainActivity.this, WorkoutLogActivity.class);
                 intent.putExtras(extras);
-                completeSound.start();
                 startActivity(intent);
             }
 
