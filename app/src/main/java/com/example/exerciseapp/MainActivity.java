@@ -98,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // if the user doesn't exist, creates a new user
+                // It took me way longer than I thought to get this working
+                // So I'm actually very proud I got it working properly
                 if( !snapshot.exists()) {
                     databaseReference.child("Users").child(userName).setValue(updatedUser);
                     Toast.makeText(MainActivity.this, "User successfully added",

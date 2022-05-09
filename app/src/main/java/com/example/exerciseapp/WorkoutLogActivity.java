@@ -18,34 +18,29 @@ public class WorkoutLogActivity extends AppCompatActivity {
     // Tedious and not the most elegant, but it gets the job done and makes it easy to add more
     // I really need to find out how to make arrays of objects somehow in the res folder to avoid
     // cluttering up my java files
-    Exercise[] legExercises =
-            {new Exercise("squats", 10, false),
-            new Exercise("lunges", 20, false),
-            new Exercise("Glute bridges", 20, false)};
-    Exercise[] armExercises =
-            {new Exercise("Push-ups", 30, false),
+    Exercise[] upperBody = {new Exercise("Push-ups", 30, false),
             new Exercise("Pull-ups", 10, false),
-            new Exercise("curls", 30, false)};
-    Exercise[] cardioExercises =
-            {new Exercise("Jogging", 30, true),
-            new Exercise("Leg lifts", 2, false),
-            new Exercise("Jump rope", 5, true)};
-    Exercise[] abExercises =
-            {new Exercise("Crunches", 30, false),
-            new Exercise("Planks", 30, false),
-            new Exercise("Knee lifts", 15, true)};
-    Exercise[] chestExercises = {
+            new Exercise("curls", 30, false),
             new Exercise("Chest fly", 20, false),
             new Exercise("Chest dips", 10, true),
             new Exercise("Landmine Press", 10, false)};
-    Exercise[] sportsExercises = {
+    Exercise[] lowerBody =
+            {new Exercise("squats", 10, false),
+            new Exercise("lunges", 20, false),
+            new Exercise("Glute bridges", 20, false), new Exercise("Crunches", 30, false),
+            new Exercise("Planks", 30, false),
+            new Exercise("Knee lifts", 15, true)};
+    Exercise[] cardioExercises =
+            {new Exercise("Jogging", 30, true),
+            new Exercise("Leg lifts", 2, false),
+            new Exercise("Jump rope", 5, true),
             new Exercise("Soccer", 30, true),
             new Exercise("Basketball", 30, true),
             new Exercise("Running", 30, true)};
 
+
     // Nested list for holding them all
-    Exercise[][] exercises =
-            {legExercises, armExercises, cardioExercises, abExercises, chestExercises, sportsExercises};
+    Exercise[][] exercises = {upperBody, lowerBody, cardioExercises};
 
 
     TextView currentTempDisplay, UVIndexDisplay;
