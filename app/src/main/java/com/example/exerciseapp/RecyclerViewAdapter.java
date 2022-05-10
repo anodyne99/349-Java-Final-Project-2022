@@ -52,7 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.exerciseName);
+            textView = itemView.findViewById(R.id.activityName);
             itemView.setOnClickListener(this);
         }
 

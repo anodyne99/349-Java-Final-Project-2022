@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
 
-    UserInfo userInfo;
 
     Bundle extras = new Bundle();
 
@@ -119,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
                 completeSound.start();
-                Intent intent = new Intent(MainActivity.this, WorkoutLogActivity.class);
+                Intent intent = new Intent(MainActivity.this, MainPage.class);
                 intent.putExtras(extras);
                 startActivity(intent);
             }

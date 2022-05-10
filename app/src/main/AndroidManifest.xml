@@ -21,11 +21,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WorkoutLogActivity">
+            android:name=".MainPage">
         </activity>
         <activity
             android:name=".MainActivity">
         </activity>
+        <activity
+            android:name=".Workouts">
+        </activity>
+        <activity
+            android:name=".AboutTheAuthor">
+        </activity>
+        <activity
+            android:name=".WorkoutDetails">
+        </activity>
+
     </application>
 
 </manifest>

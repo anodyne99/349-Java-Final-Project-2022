@@ -3,45 +3,29 @@ package com.example.exerciseapp;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class WorkoutLogActivity extends AppCompatActivity {
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.Locale;
 
+public class MainPage extends AppCompatActivity {
 
-    // Tedious and not the most elegant, but it gets the job done and makes it easy to add more
-    // I really need to find out how to make arrays of objects somehow in the res folder to avoid
-    // cluttering up my java files
-    Exercise[] upperBody = {new Exercise("Push-ups", 30, false),
-            new Exercise("Pull-ups", 10, false),
-            new Exercise("curls", 30, false),
-            new Exercise("Chest fly", 20, false),
-            new Exercise("Chest dips", 10, true),
-            new Exercise("Landmine Press", 10, false)};
-    Exercise[] lowerBody =
-            {new Exercise("squats", 10, false),
-            new Exercise("lunges", 20, false),
-            new Exercise("Glute bridges", 20, false), new Exercise("Crunches", 30, false),
-            new Exercise("Planks", 30, false),
-            new Exercise("Knee lifts", 15, true)};
-    Exercise[] cardioExercises =
-            {new Exercise("Jogging", 30, true),
-            new Exercise("Leg lifts", 2, false),
-            new Exercise("Jump rope", 5, true),
-            new Exercise("Soccer", 30, true),
-            new Exercise("Basketball", 30, true),
-            new Exercise("Running", 30, true)};
-
-
-    // Nested list for holding them all
-    Exercise[][] exercises = {upperBody, lowerBody, cardioExercises};
-
+    final String[] options = new String[] {
+            "Workout",
+            "About the Author"
+    };
 
     TextView currentTempDisplay, UVIndexDisplay;
 
@@ -52,19 +36,45 @@ public class WorkoutLogActivity extends AppCompatActivity {
     String cityName;
     int currTemp, airQuality;
     double windSpeed, uvIndex, precipitation;
+    private ArrayList<String> optionNames;
+    private ListView listView;
+    String username;
+    Intent intent;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workout_log);
+        setContentView(R.layout.activity_main_menu);
+        listView = findViewById(R.id.optionsList);
         findViewById(R.id.Loading).setVisibility(View.VISIBLE);
         findViewById(R.id.GoodWeather).setVisibility(View.GONE);
         findViewById(R.id.UVGood).setVisibility(View.GONE);
+        findViewById(R.id.optionsList).setVisibility(View.GONE);
+
         Intent prevIntent = getIntent();
         name = prevIntent.getStringExtra("firstName");
         zip = prevIntent.getStringExtra("zip");
         new weatherTask().execute();
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
+                android.R.id.text1, options);
+        listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener((adapterView, view, position, l) -> {
+            String data = (String) adapterView.getItemAtPosition(position);
+            String strippedData = data.replaceAll(" ", "").toLowerCase();
+            if (strippedData.contentEquals("workout")){
+                Intent intent = new Intent(MainPage.this, Workouts.class);
+                startActivity(intent);
+            }
+            else if (strippedData.contentEquals("abouttheauthor")){
+                Intent intent = new Intent(MainPage.this, AboutTheAuthor.class);
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(this, "Error, please try selecting again", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public boolean niceWeather(double temp, double wind, double rain) {
@@ -122,6 +132,7 @@ public class WorkoutLogActivity extends AppCompatActivity {
                 findViewById(R.id.Loading).setVisibility(View.GONE);
                 findViewById(R.id.GoodWeather).setVisibility(View.VISIBLE);
                 findViewById(R.id.UVGood).setVisibility(View.VISIBLE);
+                findViewById(R.id.optionsList).setVisibility(View.VISIBLE);
             }
 
             catch(Exception e){
@@ -129,7 +140,6 @@ public class WorkoutLogActivity extends AppCompatActivity {
             }
         }
     }
-
 
 
 }

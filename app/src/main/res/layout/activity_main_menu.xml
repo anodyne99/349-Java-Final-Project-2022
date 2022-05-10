@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WorkoutLogActivity">
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/Header"
@@ -34,12 +34,11 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/categoryView"
+    <ListView
+        android:id="@+id/optionsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/Header" />
-
+        android:layout_below="@+id/Header"/>
 
 
 </RelativeLayout>
