@@ -3,13 +3,8 @@ package com.example.exerciseapp;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.VideoView;
-import android.widget.MediaController;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +17,7 @@ public class IntroVideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_layout);
-        VideoView videoView = (VideoView) findViewById(R.id.videoView);
+        VideoView videoView = findViewById(R.id.videoView);
         String uriPath = "android.resource://com.example.exerciseapp/" + R.raw.jumprope;
         Uri uri = Uri.parse(uriPath);
         videoView.setVideoURI(uri);

@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+// Thank you for this file from the demo in-class
+
 public class HttpRequest {
     public static String executeGet(String targetURL) {
         URL url;

@@ -2,7 +2,6 @@ package com.example.exerciseapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-// For database success and failure sounds
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -21,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

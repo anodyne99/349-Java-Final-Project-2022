@@ -30,7 +30,7 @@
             android:name=".Workouts">
         </activity>
         <activity
-            android:name=".AboutTheAuthor">
+            android:name=".Motivation">
         </activity>
         <activity
             android:name=".WorkoutDetails">

@@ -3,7 +3,6 @@ package com.example.exerciseapp;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 
@@ -16,15 +15,13 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class MainPage extends AppCompatActivity {
 
     final String[] options = new String[] {
             "Workout",
-            "About the Author"
+            "Motivation"
     };
 
     TextView currentTempDisplay, UVIndexDisplay;
@@ -67,8 +64,8 @@ public class MainPage extends AppCompatActivity {
                 Intent intent = new Intent(MainPage.this, Workouts.class);
                 startActivity(intent);
             }
-            else if (strippedData.contentEquals("abouttheauthor")){
-                Intent intent = new Intent(MainPage.this, AboutTheAuthor.class);
+            else if (strippedData.contentEquals("motivation")){
+                Intent intent = new Intent(MainPage.this, Motivation.class);
                 startActivity(intent);
             }
             else {
